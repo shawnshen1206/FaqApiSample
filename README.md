@@ -73,7 +73,8 @@ https://<你的 GufoFAQ 網域>
 { "error": "問答次數不足", "code": "quota_exceeded" }
 ```
 
-**用 HTTP 狀態碼 ＋ `code` 分流，不要比對句子**（句子會隨租戶語言變）。回應標頭一律帶
+**用 HTTP 狀態碼 ＋ `code` 分流，不要比對句子。** 句子的語言由**租戶在產品介面設定的介面
+語言**決定（`zh-TW`／`en`），呼叫端送 `Accept-Language` 不會改變它。回應標頭一律帶
 `X-Correlation-ID`，回報問題時附上它。
 
 ---

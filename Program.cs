@@ -44,8 +44,8 @@ client.DefaultRequestHeaders.Add("X-Widget-Token", widgetToken);
 // ⚠️ 從後端呼叫時 `Origin` 要自己帶——瀏覽器會自動帶，HttpClient 不會。
 // 沒有 Origin 也沒有 Referer 時，請求會被判成「來源不允許」而 403。
 client.DefaultRequestHeaders.Add("Origin", origin);
-// 錯誤訊息的語言（值域 zh-TW / en）。不帶就用租戶自己的設定。
-client.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue("zh-TW"));
+// 服務端訊息的語言由**租戶在產品介面設定的介面語言**決定（zh-TW／en）；
+// 送 `Accept-Language` 不會改變它——所以錯誤分流一律看狀態碼與 code，不要比對句子。
 
 var command = args.Length > 0 ? args[0] : "all";
 
